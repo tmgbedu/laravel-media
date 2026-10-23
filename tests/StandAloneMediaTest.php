@@ -6,10 +6,11 @@ use Aammui\LaravelMedia\Facades\Media;
 use Aammui\LaravelMedia\Models\Media as ModelsMedia;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use PHPUnit\Framework\Attributes\Test;
 
 class StandAloneMediaTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function standalone_media_can_create()
     {
         $image = UploadedFile::fake()->image('avatar.jpg');
@@ -17,7 +18,7 @@ class StandAloneMediaTest extends TestCase
         $this->assertEquals(1, count(Media::all()));
     }
 
-    /** @test */
+    #[Test]
     public function standalone_media_can_add_to_collection()
     {
         $image = UploadedFile::fake()->image('avatar.jpg');
@@ -29,7 +30,7 @@ class StandAloneMediaTest extends TestCase
         $this->assertEquals(3, Media::getMedia()->count());
     }
 
-    /** @test */
+    #[Test]
     public function standalone_media_can_add_from_path()
     {
         $path = __DIR__.'/TestFiles/sample.pdf';
@@ -37,7 +38,7 @@ class StandAloneMediaTest extends TestCase
         $this->assertEquals(1, Media::getMedia()->count());
     }
 
-    /** @test */
+    #[Test]
     public function media_can_add_from_url()
     {
         $url = "http://www.africau.edu/images/default/sample.pdf";
@@ -53,7 +54,7 @@ class StandAloneMediaTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function media_can_store_and_retrieve_from_particular_storage()
     {
         Storage::fake("s3");

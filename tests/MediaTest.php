@@ -7,10 +7,11 @@ use Aammui\LaravelMedia\Models\Media;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
+use PHPUnit\Framework\Attributes\Test;
 
 class MediaTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function media_can_attached_to_a_model()
     {
         $image = UploadedFile::fake()->image('avatar.jpg');
@@ -19,7 +20,7 @@ class MediaTest extends TestCase
         $this->assertEquals(1, count(Media::all()));
     }
 
-    /** @test */
+    #[Test]
     public function media_can_add_to_collection()
     {
         $image = UploadedFile::fake()->image('avatar.jpg');
@@ -33,10 +34,9 @@ class MediaTest extends TestCase
     }
 
     /**
-     * @test
-     *
      * @todo Fix file upload from directory
      */
+    #[Test]
     public function media_can_add_from_path()
     {
         //        $path = __DIR__ . '/TestFiles/sample.pdf';
@@ -48,7 +48,7 @@ class MediaTest extends TestCase
         $this->markTestSkipped();
     }
 
-    /** @test */
+    #[Test]
     public function media_can_add_from_url()
     {
         $url   = "http://www.africau.edu/images/default/sample.pdf";
@@ -61,7 +61,7 @@ class MediaTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function multiple_media_can_linked_from_server()
     {
         $url   = "http://www.africau.edu/images/default/sample.pdf";
@@ -81,7 +81,7 @@ class MediaTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function media_can_store_and_retrieve_from_particular_storage()
     {
         Storage::fake("s3");

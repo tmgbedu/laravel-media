@@ -5,6 +5,7 @@ namespace Aammui\LaravelMedia\Tests;
 use Aammui\LaravelMedia\Enum\Responsive;
 use Aammui\LaravelMedia\Models\Media;
 use Illuminate\Http\UploadedFile;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Class DocumentTest
@@ -12,7 +13,7 @@ use Illuminate\Http\UploadedFile;
  */
 class DocumentTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function document_can_attached_to_a_model()
     {
         $pdf   = UploadedFile::fake()->create('document.pdf', 100);
