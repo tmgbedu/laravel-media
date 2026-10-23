@@ -36,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: |
           # Laravel 10/11 are past end of life and every release is flagged by a security advisory.
-          composer config --json policy '{"advisories":{"block":false}}'
+          composer config audit.block-insecure false
           composer require "laravel/framework:${{ matrix.laravel }}" --dev --no-interaction --no-update
           composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
