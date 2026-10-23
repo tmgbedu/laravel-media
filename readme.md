@@ -17,11 +17,17 @@ composer require aammui/laravel-media
 ```
 **Laravel Compatibility**
 
-| Laravel Version | Role Permission Version | Installation                                      |
-|-----------------|-------------------------|---------------------------------------------------|
-| 10.x            |                         | ```composer require aammui/laravel-media:3.0.0``` |
+| Laravel Version          | Laravel Media Version | Installation                                      |
+|--------------------------|-----------------------|---------------------------------------------------|
+| 10.x, 11.x, 12.x, 13.x   | 4.x                   | ```composer require aammui/laravel-media:^4.0```  |
+| 10.x                     | 3.0.0                 | ```composer require aammui/laravel-media:3.0.0``` |
 | 9.x             | 2.0.0                   | ```composer require aammui/laravel-media:2.0.0``` |
 | 8.x, 7.x, 6.x   | 1.0.0                   | ```composer require aammui/laravel-media:1.0.0``` |
+
+**Requirements (4.x):** PHP 8.1+ with the `gd` extension. Images are processed with
+[intervention/image](https://image.intervention.io/v3) v3.
+
+Upgrading from 3.x? See the [CHANGELOG](CHANGELOG.md).
 
 ### Publish assests
 

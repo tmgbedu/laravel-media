@@ -4,6 +4,8 @@ namespace Aammui\LaravelMedia\Tests;
 
 use Aammui\LaravelMedia\Enum\Extension;
 use Aammui\LaravelMedia\Enum\Responsive;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Class ExtensionTest
@@ -11,21 +13,15 @@ use Aammui\LaravelMedia\Enum\Responsive;
  */
 class ExtensionTest extends TestCase
 {
-    /**
-     * @dataProvider imageExtensionProvider
-     *
-     * @test
-     */
+    #[Test]
+    #[DataProvider('imageExtensionProvider')]
     public function it_detects_if_the_given_extension_is_image($extension)
     {
         $this->assertTrue(Extension::isImage($extension));
     }
 
-    /**
-     * @dataProvider documentExtensionProvider
-     *
-     * @test
-     */
+    #[Test]
+    #[DataProvider('documentExtensionProvider')]
     public function it_detects_if_the_given_extension_is_documents($extension)
     {
         $this->assertTrue(Extension::isDocument($extension));

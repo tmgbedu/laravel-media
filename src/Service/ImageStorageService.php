@@ -4,7 +4,7 @@ namespace Aammui\LaravelMedia\Service;
 
 use Aammui\LaravelMedia\Enum\Responsive;
 use Aammui\LaravelMedia\Service\Interfaces\FileStorageInterface;
-use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\ImageManager;
 use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
 
@@ -37,16 +37,11 @@ class ImageStorageService extends BaseStorageService implements FileStorageInter
      */
     private function resizeImage($file, $key, $path, $disk)
     {
-        $image = Image::make($file);
+        $image = ImageManager::gd()->read($file->getRealPath());
 
-        $img = $image->resize(
-            Responsive::getWidthFromConfig($key), Responsive::getHeightFromConfig($key),
-            function ($constraint) {
-                $constraint->aspectRatio();
-            }
-        );
+        $image->scale(Responsive::getWidthFromConfig($key), Responsive::getHeightFromConfig($key));
 
-        parent::upload($disk, $path, $img->stream()->detach());
+        parent::upload($disk, $path, (string) $image->encode());
     }
 
     /**
